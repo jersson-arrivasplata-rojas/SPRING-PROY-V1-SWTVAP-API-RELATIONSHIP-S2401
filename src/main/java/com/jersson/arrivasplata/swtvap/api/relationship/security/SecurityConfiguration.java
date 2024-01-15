@@ -1,4 +1,4 @@
-package com.jersson.arrivasplata.swtvap.api.relationship.secutiry;
+package com.jersson.arrivasplata.swtvap.api.relationship.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,11 +21,13 @@ public class SecurityConfiguration {
     private String issuerUri;
 
     private static final String[] SECURITY_MATCHER_LIST = {
-            "/api/settings/**"
+            "/api/**"
     };
 
     private static final String[] WHITE_LIST = {
-            "/swtvap-api-setting/v3/api-docs"
+            "/swtvap-api-setting/v3/api-docs",
+            "/api/clients/**",
+            "/api/providers/**"
     };
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSecurity) {

@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value ="/api/clients",produces = "application/vnd.swtvap-api-relationship.v1+json")
+@RequestMapping(value ="/api/clients",produces = "application/vnd.swtvap-api-clients.v1+json")
 public class ClientControllerImpl implements ClientController {
     private final ClientService clientService;
     private final UtilityService utilityService;
@@ -62,7 +62,7 @@ public class ClientControllerImpl implements ClientController {
     @ResponseStatus(HttpStatus.OK)
     public Mono<ClientResponse> updateClient(@PathVariable Long id, @RequestBody ClientRequest clientRequest) {
         Client client = clientMapper.clientRequestToClient(clientRequest);
-        client.setId(id);
+        client.setClientId(id);
         return clientService.updateClient(client)
                 .map(updatedClient -> {
                     ClientResponse clientResponse = clientMapper.clientToClientResponse(updatedClient);
@@ -76,8 +76,7 @@ public class ClientControllerImpl implements ClientController {
         return clientService.deleteClientById(id);
     }
 
-    @GetMapping("/doSomething")
-
+    @GetMapping("/doSomething") // No agregar en otros
     public Mono<ResponseEntity<String>> performUsefulOperationWithResponse() {
         utilityService.doSomething();
         return Mono.just(ResponseEntity.ok("Operation successfull"));

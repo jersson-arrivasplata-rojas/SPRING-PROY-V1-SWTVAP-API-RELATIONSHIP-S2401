@@ -1,4 +1,4 @@
-package com.jersson.arrivasplata.swtvap.api.relationship.secutiry;
+package com.jersson.arrivasplata.swtvap.api.relationship.security;
 
 import com.nimbusds.jose.shaded.gson.internal.LinkedTreeMap;
 import org.springframework.core.convert.converter.Converter;

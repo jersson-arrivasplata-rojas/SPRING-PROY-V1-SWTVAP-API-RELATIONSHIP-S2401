@@ -12,7 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+@RestController
+@RequestMapping(value ="/api/providers",produces = "application/vnd.swtvap-api-providers.v1+json")
 public class ProviderControllerImpl implements ProviderController {
     private final ProviderService providerService;
     private final UtilityService utilityService;
@@ -61,7 +62,7 @@ public class ProviderControllerImpl implements ProviderController {
     @ResponseStatus(HttpStatus.OK)
     public Mono<ProviderResponse> updateProvider(Long id, ProviderRequest providerRequest) {
         Provider provider = providerMapper.providerRequestToProvider(providerRequest);
-        provider.setId(id);
+        provider.setProviderId(id);
         return providerService.updateProvider(provider)
                 .map(updatedProvider -> {
                     ProviderResponse providerResponse = providerMapper.providerToProviderResponse(updatedProvider);

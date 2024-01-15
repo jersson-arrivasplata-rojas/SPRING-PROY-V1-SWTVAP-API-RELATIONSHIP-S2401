@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProviderMapper {
     ProviderMapper INSTANCE = Mappers.getMapper(ProviderMapper.class);
-    @Mapping(target = "id", ignore = true)
+   // @Mapping(target = "id", ignore = true)
     Provider providerRequestToProvider(ProviderRequest providerRequest);
     ProviderRequest providerToProviderRequest(Provider provider);
     ProviderResponse providerToProviderResponse(Provider provider);

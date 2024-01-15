@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
-    @Mapping(target = "id", ignore = true)
+   // @Mapping(target = "id", ignore = true)
     Client clientRequestToClient(ClientRequest clientRequest);
     ClientRequest clientToClientRequest(Client client);
     ClientResponse clientToClientResponse(Client client);

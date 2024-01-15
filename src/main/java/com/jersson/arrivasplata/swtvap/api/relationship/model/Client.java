@@ -2,45 +2,46 @@ package com.jersson.arrivasplata.swtvap.api.relationship.model;
 
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "swtvap_clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long clientId;
 
     @Column(length = 50)
     private String name;
 
-    @Column(length = 255)
+    @Column(length = 250)
     private String address;
 
     @Column(length = 20)
     private String phone;
 
     @Column(length = 20)
-    private String celphone;
+    private String cellphone;
 
-    @Column(length = 5)
-    private String country_code;
+    @Column(name="country_code", length = 5)
+    private String countryCode;
 
     @Column(length = 50)
     private String email;
 
-    @Column(name = "whatsapp", columnDefinition = "TINYINT(1)")
+    @Column()
     private Boolean whatsapp;
 
-    @Column(length = 255)
+    @Column(length = 250)
     private String details;
 
-    @Column(columnDefinition = "TEXT")
-    private String other_details;
+    @Column(name="other_details", columnDefinition = "TEXT")
+    private String otherDetails;
 
-    @Enumerated(EnumType.STRING)
-    private Status source_aggregate;
+    @Enumerated(EnumType.ORDINAL)
+    private Status sourceAggregate;
 }

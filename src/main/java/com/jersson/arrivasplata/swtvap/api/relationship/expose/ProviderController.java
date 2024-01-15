@@ -9,7 +9,6 @@ import reactor.core.publisher.Mono;
 public interface ProviderController {
     Flux<ProviderResponse> getAllProviders();
     Mono<ProviderResponse> getProviderById(Long id);
-
     Mono<ProviderResponse> createProvider(ProviderRequest providerRequest);
     Mono<ProviderResponse> updateProvider(Long id, ProviderRequest providerRequest);
     Mono<Void> deleteProvider(Long id);
