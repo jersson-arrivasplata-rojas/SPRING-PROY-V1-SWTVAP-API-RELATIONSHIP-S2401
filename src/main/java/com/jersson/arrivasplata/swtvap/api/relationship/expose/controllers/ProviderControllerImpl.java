@@ -7,6 +7,7 @@ import com.jersson.arrivasplata.swtvap.api.relationship.model.ProviderRequest;
 import com.jersson.arrivasplata.swtvap.api.relationship.model.ProviderResponse;
 import com.jersson.arrivasplata.swtvap.api.relationship.util.UtilityService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -45,7 +46,7 @@ public class ProviderControllerImpl implements ProviderController {
                 });
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<ProviderResponse> createProvider(@RequestBody ProviderRequest providerRequest) {
         Provider provider = providerMapper.providerRequestToProvider(providerRequest);
@@ -59,7 +60,7 @@ public class ProviderControllerImpl implements ProviderController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<ProviderResponse> updateProvider(Long id, ProviderRequest providerRequest) {
+    public Mono<ProviderResponse> updateProvider(@PathVariable Long id, @RequestBody ProviderRequest providerRequest) {
         Provider provider = providerMapper.providerRequestToProvider(providerRequest);
         provider.setProviderId(id);
         return providerService.updateProvider(provider)

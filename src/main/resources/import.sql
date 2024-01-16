@@ -4,6 +4,6 @@ INSERT INTO "public"."swtvap_clients" (id, name, address, phone, cellphone, coun
 INSERT INTO "public"."swtvap_clients" (id, name, address, phone, cellphone, country_code, email, whatsapp, details,source_aggregate) VALUES (3,'Franklin Gomez','Av. del Pinar 650,Miraflores, Lima', '018123562','900514845','+51','fgomez_123@gmail.com',false,'All ok', 0);
 
 -- Actualizar los valores de Clients y Provider al insert
-INSERT INTO "public"."swtvap_providers" (id, name, address, phone, cellphone, country_code, email, whatsapp, details, status) VALUES (1,'CHARSAC','Av. del Pinar 650,Miraflores, Lima', '018123562','900514845','+51','fgomez_123@gmail.com', true,'All ok', 1);
+INSERT INTO "public"."swtvap_providers" (id, name, address, phone, cellphone, country_code, email, whatsapp, details, status) VALUES (1,'CHARSAC','Av. del Pinar 650,Miraflores, Lima', '018123562','900514845','+51','charsac@gmail.com', true,'All ok', 1);
 INSERT INTO "public"."swtvap_providers" (id, name, address, phone, cellphone, country_code, email, whatsapp, details, status) VALUES (2,'PRINSAC','Av. Defensores del Morro 152,Chorrillos, Lima, Lima', '018123562','900514845','+51','prinsac@gmail.com', true,'All ok', 0);
 INSERT INTO "public"."swtvap_providers" (id, name, address, phone, cellphone, country_code, email, whatsapp, details, status) VALUES (3,'MAGENSA','Av. Argentina 990, Cercado de Lima, Lima', '014334848','900514845','+51','magensa@magensa.com', false,'All ok', 1);
