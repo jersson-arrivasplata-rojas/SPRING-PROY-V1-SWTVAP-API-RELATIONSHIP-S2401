@@ -5,11 +5,12 @@ import com.jersson.arrivasplata.swtvap.api.relationship.exception.CustomExceptio
 import com.jersson.arrivasplata.swtvap.api.relationship.model.Provider;
 import com.jersson.arrivasplata.swtvap.api.relationship.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Optional;
-
+@Service
 public class ProviderServiceImpl implements ProviderService {
 
     private final ProviderRepository providerRepository;
@@ -58,6 +59,6 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     public Provider getProviderByName(String name){
-        return providerRepository.findbyName(name);
+        return providerRepository.findByName(name);
     }
 }

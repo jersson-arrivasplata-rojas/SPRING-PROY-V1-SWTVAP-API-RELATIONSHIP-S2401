@@ -1,5 +1,4 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.expose.controllers;
-
 import com.jersson.arrivasplata.swtvap.api.relationship.business.service.ProviderService;
 import com.jersson.arrivasplata.swtvap.api.relationship.expose.ProviderController;
 import com.jersson.arrivasplata.swtvap.api.relationship.mapper.ProviderMapper;
@@ -48,7 +47,7 @@ public class ProviderControllerImpl implements ProviderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ProviderResponse> createProvider(ProviderRequest providerRequest) {
+    public Mono<ProviderResponse> createProvider(@RequestBody ProviderRequest providerRequest) {
         Provider provider = providerMapper.providerRequestToProvider(providerRequest);
 
         return providerService.createProvider(provider)

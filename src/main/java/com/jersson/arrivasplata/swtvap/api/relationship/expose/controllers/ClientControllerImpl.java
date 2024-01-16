@@ -8,6 +8,7 @@ import com.jersson.arrivasplata.swtvap.api.relationship.model.ClientRequest;
 import com.jersson.arrivasplata.swtvap.api.relationship.model.ClientResponse;
 import com.jersson.arrivasplata.swtvap.api.relationship.util.UtilityService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -46,9 +47,9 @@ public class ClientControllerImpl implements ClientController {
                 });
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ClientResponse> createClient(ClientRequest clientRequest) {
+    public Mono<ClientResponse> createClient(@RequestBody ClientRequest clientRequest) {
         Client client = clientMapper.clientRequestToClient(clientRequest);
 
         return clientService.createClient(client)

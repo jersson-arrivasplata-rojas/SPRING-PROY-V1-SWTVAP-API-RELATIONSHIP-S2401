@@ -1,7 +1,8 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.model;
-
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.SourceAggregate;
+import lombok.Data;
 
+@Data
 public class ClientRequest {
     private Long clientId;
     private String name;

@@ -1,5 +1,6 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.model;
 
+import com.jersson.arrivasplata.swtvap.api.relationship.enums.SourceAggregate;
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -43,5 +44,5 @@ public class Client {
     private String otherDetails;
 
     @Enumerated(EnumType.ORDINAL)
-    private Status sourceAggregate;
+    private SourceAggregate sourceAggregate;
 }

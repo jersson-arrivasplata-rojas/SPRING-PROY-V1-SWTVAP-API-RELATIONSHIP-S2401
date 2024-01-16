@@ -1,10 +1,7 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.model;
-
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
+import lombok.Data;
+@Data
 public class ProviderRequest {
     private Long providerId;
     private String name;
