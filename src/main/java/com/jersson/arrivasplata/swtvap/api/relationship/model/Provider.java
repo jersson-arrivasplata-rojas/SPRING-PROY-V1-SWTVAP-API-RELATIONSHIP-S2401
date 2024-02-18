@@ -36,7 +36,7 @@ public class Provider {
     @Column()
     private Boolean whatsapp;
 
-    @Column(length = 250)
+    @Column(name="details", columnDefinition = "TEXT")
     private String details;
 
     @Column(name="other_details", columnDefinition = "TEXT")
