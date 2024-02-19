@@ -2,6 +2,8 @@ package com.jersson.arrivasplata.swtvap.api.relationship.model;
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.SourceAggregate;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class ClientRequest {
     private Long clientId;
@@ -15,4 +17,5 @@ public class ClientRequest {
     private String details;
     private String otherDetails;
     private SourceAggregate sourceAggregate;
+    private LocalDate deletedAt;
 }

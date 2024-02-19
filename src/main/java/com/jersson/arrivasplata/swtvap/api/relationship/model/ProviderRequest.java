@@ -1,6 +1,9 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.model;
 import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
 import lombok.Data;
+
+import java.time.LocalDate;
+
 @Data
 public class ProviderRequest {
     private Long providerId;
@@ -14,4 +17,5 @@ public class ProviderRequest {
     private String details;
     private String otherDetails;
     private Status status;
+    private LocalDate deletedAt;
 }

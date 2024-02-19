@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "swtvap_clients")
@@ -45,4 +47,7 @@ public class Client {
 
     @Enumerated(EnumType.ORDINAL)
     private SourceAggregate sourceAggregate;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 }
