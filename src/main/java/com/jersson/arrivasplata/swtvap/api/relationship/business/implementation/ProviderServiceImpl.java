@@ -1,9 +1,11 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.business.implementation;
 
 import com.jersson.arrivasplata.swtvap.api.relationship.business.service.ProviderService;
+import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
 import com.jersson.arrivasplata.swtvap.api.relationship.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.relationship.model.Provider;
 import com.jersson.arrivasplata.swtvap.api.relationship.repository.ProviderRepository;
+import com.jersson.arrivasplata.swtvap.api.relationship.util.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -50,11 +52,16 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public Mono<Void> deleteProviderbyId(Long id) {
-        Optional<Provider> provider = providerRepository.findById(id);
-        if (!provider.isPresent()) {
+        Optional<Provider> providerOptional = providerRepository.findById(id);
+        if (!providerOptional.isPresent()) {
             throw new CustomException("Provider not found with id: " + id);
         }
-        providerRepository.deleteById(id);
+        // Resto de la lógica para eliminar un provider
+        Provider provider = providerOptional.get();
+        provider.setStatus(Status.INACTIVE);
+        provider.setDeletedAt(Common.builder().build().getCurrentDate());
+        providerRepository.save(provider);
+
         return Mono.empty();
     }
 

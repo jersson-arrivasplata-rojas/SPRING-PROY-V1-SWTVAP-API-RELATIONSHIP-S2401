@@ -1,9 +1,12 @@
 package com.jersson.arrivasplata.swtvap.api.relationship.business.implementation;
 
 import com.jersson.arrivasplata.swtvap.api.relationship.business.service.ClientService;
+import com.jersson.arrivasplata.swtvap.api.relationship.enums.Status;
 import com.jersson.arrivasplata.swtvap.api.relationship.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.relationship.model.Client;
+import com.jersson.arrivasplata.swtvap.api.relationship.model.Provider;
 import com.jersson.arrivasplata.swtvap.api.relationship.repository.ClientRepository;
+import com.jersson.arrivasplata.swtvap.api.relationship.util.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -51,11 +54,15 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Mono<Void> deleteClientById(Long id) { //Eliminar Cliente
-        Optional<Client> client = clientRepository.findById(id);
-        if (!client.isPresent()) {
+        Optional<Client> clientOptional = clientRepository.findById(id);
+        if (!clientOptional.isPresent()) {
             throw new CustomException("Client not found with id: " + id);
         }
-        clientRepository.deleteById(id);
+        // Resto de la lógica para eliminar un client
+        Client client = clientOptional.get();
+        client.setDeletedAt(Common.builder().build().getCurrentDate());
+        clientRepository.save(client);
+
         return Mono.empty();
     }
 
